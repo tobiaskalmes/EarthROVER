@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #
 
-import threading
+import thread
 import time
 import nxt
 import sys
@@ -30,8 +30,7 @@ def output_sensors(delay):
 
 class outputSensors(threading.Thread):
     def run(self):
-        while 1:
-            output_sensors(1)
+        output_sensors(500)
         
 #read key
 def getch():
@@ -39,7 +38,7 @@ def getch():
     old_settings = termios.tcgetattr(fd)
     try:
         tty.setraw(fd)
-        ch = sys.stdin.read(10)
+        ch = sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
@@ -57,15 +56,11 @@ def handle_input():
             print "Backwards"
             motorA.turn(-100, 360, False)
     print "Finished"
-    sys.exit()
 
 class inputHandler(threading.Thread):
     def run(self):
         handle_input()
 
 sensorThread = outputSensors()
-inputThread = inputHandler()
 
 sensorThread.start()
-#time.sleep(1000)
-inputThread.start()
