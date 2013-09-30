@@ -2,9 +2,9 @@ package de.htw.tojato.robotik.earthrover;
 
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
+import de.htw.tojato.robotik.earthrover.driver.Driver;
 import de.htw.tojato.robotik.earthrover.logger.LoggerNames;
 import de.htw.tojato.robotik.earthrover.logger.RootLogger;
-import de.htw.tojato.robotik.earthrover.sensors.SensorCollection;
 import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.CompassHTSensorExt;
 import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.GyroSensorExt;
 import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.SensorCollectionExt;
@@ -28,7 +28,7 @@ public class Main {
     private static RootLogger logger = RootLogger.getInstance(LoggerNames.MAIN_LOGGER);
 
     public static void main(String[] args) {
-        SensorCollection sensorCollection = SensorCollection.getInstance();
+        /*SensorCollection sensorCollection = SensorCollection.getInstance();
         while (true) {
             logger.log("KalmanCompass - Heading: " + sensorCollection.getHeading(), Level.INFO);
             try {
@@ -36,7 +36,8 @@ public class Main {
             } catch (InterruptedException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-        }
+        }*/
+        Driver.getInstance().drive(30, 360);
     }
 
     public static void main2(String[] args) throws Exception {
