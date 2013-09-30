@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="leJOS PC">
+    <CLASSES>
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/classes/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/jtools/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/org.lejos.charting/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/org.lejos.example/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/org.lejos.pcexample/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/pccomms/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/pcsamples/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/pctools/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/samples/src" />
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/source/startup/src" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc" recursive="false" />
+    <jarDirectory url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc" recursive="false" type="SOURCES" />
+  </library>
+</component>

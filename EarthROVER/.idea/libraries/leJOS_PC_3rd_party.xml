@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="leJOS PC 3rd party">
+    <CLASSES>
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc/3rdparty" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc/3rdparty" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc/3rdparty" recursive="false" />
+    <jarDirectory url="file://C:/Program Files (x86)/leJOS NXJ/lib/pc/3rdparty" recursive="false" type="SOURCES" />
+  </library>
+</component>
