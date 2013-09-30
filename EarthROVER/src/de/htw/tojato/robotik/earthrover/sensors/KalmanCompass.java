@@ -2,8 +2,8 @@ package de.htw.tojato.robotik.earthrover.sensors;
 
 import de.htw.tojato.robotik.earthrover.logger.LoggerNames;
 import de.htw.tojato.robotik.earthrover.logger.RootLogger;
-import lejos.nxt.addon.CompassHTSensor;
-import lejos.nxt.addon.GyroSensor;
+import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.CompassHTSensorExt;
+import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.GyroSensorExt;
 
 import java.util.Date;
 import java.util.logging.Level;
@@ -16,14 +16,14 @@ import java.util.logging.Level;
  * To change this template use File | Settings | File Templates.
  */
 public class KalmanCompass {
-    private static KalmanCompass   instance;
-    private        RootLogger      logger;
-    private        GyroSensor      gyroSensor;
-    private        CompassHTSensor magneticSensor;
-    private        float           heading;
-    private        float           mounting;
-    private        Thread          updateHeading;
-    private        boolean         keepUpdating;
+    private static KalmanCompass      instance;
+    private        RootLogger         logger;
+    private        GyroSensorExt      gyroSensor;
+    private        CompassHTSensorExt magneticSensor;
+    private        float              heading;
+    private        float              mounting;
+    private        Thread             updateHeading;
+    private        boolean            keepUpdating;
 
     private KalmanCompass() {
         heading = -1.0f;
@@ -118,7 +118,7 @@ public class KalmanCompass {
         updateHeading.start();
     }
 
-    public static KalmanCompass getInstance(GyroSensor gyroSensor, CompassHTSensor magneticSensor) {
+    public static KalmanCompass getInstance(GyroSensorExt gyroSensor, CompassHTSensorExt magneticSensor) {
         if (instance == null) {
             instance = new KalmanCompass();
         }
