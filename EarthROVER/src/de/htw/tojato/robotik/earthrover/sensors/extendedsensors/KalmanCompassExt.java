@@ -1,9 +1,7 @@
-package de.htw.tojato.robotik.earthrover.sensors;
+package de.htw.tojato.robotik.earthrover.sensors.extendedsensors;
 
 import de.htw.tojato.robotik.earthrover.logger.LoggerNames;
 import de.htw.tojato.robotik.earthrover.logger.RootLogger;
-import lejos.nxt.addon.CompassHTSensor;
-import lejos.nxt.addon.GyroSensor;
 
 import java.util.Date;
 import java.util.logging.Level;
@@ -11,22 +9,21 @@ import java.util.logging.Level;
 /**
  * Created with IntelliJ IDEA.
  * User: Tobias
- * Date: 30.09.13
- * Time: 14:33
+ * Date: 27.09.13
+ * Time: 23:55
  * To change this template use File | Settings | File Templates.
  */
-public class KalmanCompass {
-    private static KalmanCompass instance;
-    private RootLogger logger;
-    private GyroSensor gyroSensor;
-    private CompassHTSensor magneticSensor;
-    private float heading;
-    private float mounting;
-    private Thread updateHeading;
-    private boolean keepUpdating;
-    private boolean init;
+public class KalmanCompassExt {
+    private static KalmanCompassExt instance;
+    private        RootLogger         logger;
+    private        GyroSensorExt      gyroSensor;
+    private        CompassHTSensorExt magneticSensor;
+    private        float              heading;
+    private        float              mounting;
+    private        Thread             updateHeading;
+    private        boolean            keepUpdating;
 
-    private KalmanCompass() {
+    private KalmanCompassExt() {
         heading = -1.0f;
         mounting = 1.0f;
         logger = RootLogger.getInstance(LoggerNames.MAIN_LOGGER);
@@ -48,7 +45,21 @@ public class KalmanCompass {
                 long timeEnd;
 
                 boolean disturbed;
-                init();
+
+                //Get Gyro offset
+                int tempGyroOffset = 0;
+                gyroSensor.setOffset(0);
+                for (int i = 0; i < 100; i++) {
+                    tempGyroOffset += gyroSensor.getAngularVelocity();
+                    try {
+                        Thread.sleep(10);
+                    }
+                    catch (InterruptedException e) {
+                        logger.log("Thread Exception: " + e.getMessage(), Level.SEVERE, e);
+                    }
+                }
+                tempGyroOffset = (tempGyroOffset / 100);
+                gyroSensor.setOffset(tempGyroOffset);
 
                 // initialise the filter;
                 compassUpdated = magneticSensor.getDegrees();
@@ -105,9 +116,9 @@ public class KalmanCompass {
         updateHeading.start();
     }
 
-    public static KalmanCompass getInstance(GyroSensor gyroSensor, CompassHTSensor magneticSensor) {
+    public static KalmanCompassExt getInstance(GyroSensorExt gyroSensor, CompassHTSensorExt magneticSensor) {
         if (instance == null) {
-            instance = new KalmanCompass();
+            instance = new KalmanCompassExt();
         }
         instance.gyroSensor = gyroSensor;
         instance.magneticSensor = magneticSensor;
@@ -115,25 +126,6 @@ public class KalmanCompass {
             instance.updateHeading.start();
         }
         return instance;
-    }
-
-    private void init() {
-        if (!init) {
-            //Get Gyro offset
-            int tempGyroOffset = 0;
-            gyroSensor.setOffset(0);
-            for (int i = 0; i < 100; i++) {
-                tempGyroOffset += gyroSensor.getAngularVelocity();
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    logger.log("Thread Exception: " + e.getMessage(), Level.SEVERE, e);
-                }
-            }
-            tempGyroOffset = (tempGyroOffset / 100);
-            gyroSensor.setOffset(tempGyroOffset);
-            init = true;
-        }
     }
 
     public float getHeading() {
@@ -146,7 +138,8 @@ public class KalmanCompass {
             result += magneticSensor.getDegrees();
             try {
                 Thread.sleep(interval);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 logger.log("Thread Exception: " + e.getMessage(), Level.SEVERE, e);
             }
         }
@@ -160,7 +153,8 @@ public class KalmanCompass {
             result += gyroSensor.getAngularVelocity();
             try {
                 Thread.sleep(interval);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 logger.log("Thread Exception: " + e.getMessage(), Level.SEVERE, e);
             }
         }

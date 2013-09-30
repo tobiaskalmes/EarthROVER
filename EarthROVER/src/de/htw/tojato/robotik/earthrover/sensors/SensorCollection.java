@@ -1,49 +1,41 @@
 package de.htw.tojato.robotik.earthrover.sensors;
 
-import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.CompassHTSensorExt;
-import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.GyroSensorExt;
-import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.IRSeekerExt;
-import de.htw.tojato.robotik.earthrover.sensors.extendedsensors.SensorPortExt;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
-import lejos.nxt.remote.NXTCommand;
+import lejos.nxt.addon.CompassHTSensor;
+import lejos.nxt.addon.GyroSensor;
+import lejos.nxt.addon.IRSeeker;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Tobias
- * Date: 29.09.13
- * Time: 12:20
+ * Date: 30.09.13
+ * Time: 14:30
  * To change this template use File | Settings | File Templates.
  */
 public class SensorCollection {
     private static SensorCollection instance;
-    private        UltrasonicSensor leftUltrasonic;
-    private        UltrasonicSensor rightUltrasonic;
-    private        KalmanCompass    kalmanCompass;
-    private        IRSeekerExt      irSeeker;
-    private        NXTCommand       nxtCommandMain;
-    private        NXTCommand       nxtCommandSecond;
+    private UltrasonicSensor ultrasonicSensor;
+    private KalmanCompass kalmanCompass;
+    private IRSeeker irSeeker;
 
     private SensorCollection() {
+        init();
     }
 
-    private void init() {
-        CompassHTSensorExt compass = new CompassHTSensorExt(nxtCommandMain, SensorPortExt.S1);
-        GyroSensorExt gyro = new GyroSensorExt(SensorPortExt.S2);
-        kalmanCompass = KalmanCompass.getInstance(gyro, compass);
-        leftUltrasonic = new UltrasonicSensor(SensorPort.S3);
-        rightUltrasonic = new UltrasonicSensor(SensorPort.S4);
-        irSeeker = new IRSeekerExt(nxtCommandSecond, SensorPortExt.S4);
-    }
-
-    public static SensorCollection getInstance(NXTCommand nxtCommandMain, NXTCommand nxtCommandSecond) {
+    public static SensorCollection getInstance() {
         if (instance == null) {
             instance = new SensorCollection();
         }
-        instance.nxtCommandMain = nxtCommandMain;
-        instance.nxtCommandSecond = nxtCommandSecond;
-        instance.init();
         return instance;
+    }
+
+    private void init() {
+        CompassHTSensor compass = new CompassHTSensor(SensorPort.S1);
+        GyroSensor gyro = new GyroSensor(SensorPort.S2);
+        ultrasonicSensor = new UltrasonicSensor(SensorPort.S3);
+        irSeeker = new IRSeeker(SensorPort.S4);
+        kalmanCompass = KalmanCompass.getInstance(gyro, compass);
     }
 
     public float getHeading() {
@@ -51,14 +43,10 @@ public class SensorCollection {
     }
 
     public int getDistanceLeft() {
-        return leftUltrasonic.getDistance();
+        return ultrasonicSensor.getDistance();
     }
 
-    public int getDistanceRight() {
-        return rightUltrasonic.getDistance();
-    }
-
-    public IRSeekerExt getIrSeeker() {
+    public IRSeeker getIrSeeker() {
         return irSeeker;
     }
 }
