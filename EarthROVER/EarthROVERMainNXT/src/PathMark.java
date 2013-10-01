@@ -7,7 +7,7 @@
  */
 public class PathMark {
     private int degrees;
-    private float heading;
+    private float headingDelta;
     private PathMarkType type;
 
     public PathMark(int degrees, PathMarkType type) {
@@ -15,17 +15,17 @@ public class PathMark {
         this.type = type;
     }
 
-    public PathMark(float heading, PathMarkType type) {
-        this.heading = heading;
+    public PathMark(float headingDelta, PathMarkType type) {
+        this.headingDelta = headingDelta;
         this.type = type;
     }
 
-    public float getHeading() {
-        return heading;
+    public float getHeadingDelta() {
+        return headingDelta;
     }
 
-    public void setHeading(float heading) {
-        this.heading = heading;
+    public void setHeadingDelta(float headingDelta) {
+        this.headingDelta = headingDelta;
     }
 
     public int getDegrees() {

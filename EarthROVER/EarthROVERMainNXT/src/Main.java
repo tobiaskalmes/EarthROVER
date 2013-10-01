@@ -40,7 +40,28 @@ public class Main {
         }
         Driver.getInstance().stop();
         LCD.drawString("Done", 0, 3);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            LCD.clear();
+            LCD.drawString("ThreadException", 0, 1);
+        }
         Driver.getInstance().displayPathData();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            LCD.clear();
+            LCD.drawString("ThreadException", 0, 1);
+        }
+        /*LCD.clear();
+        LCD.drawString("Driving Home", 0, 0);
+        try {
+            Driver.getInstance().driveHomeSimple();
+        } catch (InterruptedException e) {
+            LCD.clear();
+            LCD.drawString("ThreadException", 0, 1);
+        }
+        LCD.drawString("arrived", 0, 1);*/
         while (true) {
             /*outputSensorValues();
             try {
