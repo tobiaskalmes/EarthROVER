@@ -37,6 +37,7 @@ public class Driver {
     }
 
     public void backward(int power) {
+        stop(false);
         pathMarkCheck();
         lastUsedType = PathMark.PathMarkType.BACKWARD;
         motorA.setPower(power);
@@ -55,6 +56,7 @@ public class Driver {
      * @throws InterruptedException
      */
     private void backward(int power, int degrees) throws InterruptedException {
+        stop(false);
         resetTachoCounts();
         motorA.setPower(power);
         motorB.setPower(power);
@@ -69,6 +71,7 @@ public class Driver {
     }
 
     public void forward(int power) {
+        stop(false);
         pathMarkCheck();
         lastUsedType = PathMark.PathMarkType.FORWARD;
         motorA.setPower(power);
@@ -86,6 +89,7 @@ public class Driver {
      * @param degrees
      */
     private void forward(int power, int degrees) throws InterruptedException {
+        stop(false);
         resetTachoCounts();
         motorA.setPower(power);
         motorB.setPower(power);
@@ -100,6 +104,7 @@ public class Driver {
     }
 
     public void turnRight(int power) {
+        stop(false);
         pathMarkCheck();
         lastUsedType = PathMark.PathMarkType.TURN_RIGHT;
         motorA.setPower(power);
@@ -111,6 +116,7 @@ public class Driver {
     }
 
     private void turnRight(int power, float headingDelta) throws InterruptedException {
+        stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading + headingDelta;
         if (destinationHeading > 360.f) {
@@ -136,6 +142,7 @@ public class Driver {
     }
 
     public void turnLeft(int power) {
+        stop(false);
         pathMarkCheck();
         lastUsedType = PathMark.PathMarkType.TURN_LEFT;
         motorA.setPower(power);
@@ -147,6 +154,7 @@ public class Driver {
     }
 
     private void turnLeft(int power, float headingDelta) throws InterruptedException {
+        stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading + headingDelta;
         if (destinationHeading < 0.f) {
