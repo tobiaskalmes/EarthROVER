@@ -11,6 +11,7 @@
     <orderEntry type="library" name="leJOS PC" level="project" />
     <orderEntry type="library" name="leJOS PC 3rd party" level="project" />
     <orderEntry type="library" name="leJOS NXT" level="project" />
+    <orderEntry type="library" name="JAX-RS-jersey-1.12 (2)" level="project" />
   </component>
 </module>
 
