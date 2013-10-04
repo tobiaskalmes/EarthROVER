@@ -1,6 +1,6 @@
-import lejos.nxt.LCD;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTMotor;
+import lejos.nxt.comm.RConsole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,44 +107,7 @@ public class Driver {
         stop(false);
         pathMarkCheck();
         lastUsedType = PathMark.PathMarkType.TURN_RIGHT;
-        motorA.setPower(power);
-        motorB.setPower(-power);
-        motorC.setPower(power);
-        motorA.backward();
-        motorB.backward();
-        motorC.backward();
-    }
-
-    private void turnRight(int power, float headingDelta) throws InterruptedException {
-        stop(false);
-        float startHeading = sensorCollection.getHeading();
-        float destinationHeading = startHeading + headingDelta;
-        if (destinationHeading > 360.f) {
-            destinationHeading -= 360.f;
-            //wait to jump past the 359.9 degree mark
-            while (sensorCollection.getHeading() >= startHeading) {
-                Thread.sleep(100);
-            }
-            while (sensorCollection.getHeading() < destinationHeading) {
-                Thread.sleep(100);
-            }
-        } else {
-            motorA.setPower(power);
-            motorB.setPower(-power);
-            motorC.setPower(power);
-            motorA.backward();
-            motorB.backward();
-            motorC.backward();
-            while (sensorCollection.getHeading() < destinationHeading) {
-                Thread.sleep(100);
-            }
-        }
-    }
-
-    public void turnLeft(int power) {
-        stop(false);
-        pathMarkCheck();
-        lastUsedType = PathMark.PathMarkType.TURN_LEFT;
+        lastHeading = sensorCollection.getHeading();
         motorA.setPower(power);
         motorB.setPower(-power);
         motorC.setPower(power);
@@ -153,29 +116,61 @@ public class Driver {
         motorC.forward();
     }
 
-    private void turnLeft(int power, float headingDelta) throws InterruptedException {
+    private void turnRight(int power, float headingDelta) throws InterruptedException {
         stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading + headingDelta;
+        motorA.setPower(power);
+        motorB.setPower(-power);
+        motorC.setPower(power);
+        motorA.forward();
+        motorB.forward();
+        motorC.forward();
+        if (destinationHeading > 360.f) {
+            destinationHeading -= 360.f;
+            //wait to jump past the 359.9 degree mark
+            while (sensorCollection.getHeading() >= startHeading - 2) {
+                Thread.sleep(100);
+            }
+        }
+        while (sensorCollection.getHeading() < destinationHeading) {
+            Thread.sleep(100);
+        }
+    }
+
+    public void turnLeft(int power) {
+        stop(false);
+        pathMarkCheck();
+        lastUsedType = PathMark.PathMarkType.TURN_LEFT;
+        lastHeading = sensorCollection.getHeading();
+        motorA.setPower(-power);
+        motorB.setPower(power);
+        motorC.setPower(-power);
+        motorA.forward();
+        motorB.forward();
+        motorC.forward();
+    }
+
+    private void turnLeft(int power, float headingDelta) throws InterruptedException {
+        stop(false);
+        float startHeading = sensorCollection.getHeading();
+        float destinationHeading = startHeading - headingDelta;
+        motorA.setPower(-power);
+        motorB.setPower(power);
+        motorC.setPower(-power);
+        motorA.forward();
+        motorB.forward();
+        motorC.forward();
         if (destinationHeading < 0.f) {
             destinationHeading += 360.f;
             //wait to jump past the 0 degree mark
-            while (sensorCollection.getHeading() >= 0) {
+            while (sensorCollection.getHeading() <= startHeading + 2) {
                 Thread.sleep(100);
             }
-            while (sensorCollection.getHeading() > destinationHeading) {
-                Thread.sleep(100);
-            }
-        } else {
-            motorA.setPower(power);
-            motorB.setPower(-power);
-            motorC.setPower(power);
-            motorA.backward();
-            motorB.backward();
-            motorC.backward();
-            while (sensorCollection.getHeading() < destinationHeading) {
-                Thread.sleep(100);
-            }
+        }
+
+        while (sensorCollection.getHeading() > destinationHeading) {
+            Thread.sleep(100);
         }
     }
 
@@ -205,33 +200,43 @@ public class Driver {
     private void pathMarkCheck() {
         switch (lastUsedType) {
             case FORWARD: {
+                RConsole.println("FORWARD");
                 pathMarks.add(new PathMark(motorB.getTachoCount(), PathMark.PathMarkType.FORWARD));
                 break;
             }
             case BACKWARD: {
+                RConsole.println("BACKWARD");
                 pathMarks.add(new PathMark(-motorB.getTachoCount(), PathMark.PathMarkType.BACKWARD));
                 break;
             }
             case TURN_LEFT: {
+                RConsole.println("TURN_LEFT");
                 float headingDelta;
                 float destinationHeading = sensorCollection.getHeading();
+                RConsole.println("LastHeading: " + Float.toString(lastHeading));
+                RConsole.println("DestinationHeading: " + Float.toString(destinationHeading));
                 if (destinationHeading > lastHeading) {
                     headingDelta = lastHeading + (359.9f - destinationHeading);
                 } else {
                     headingDelta = lastHeading - destinationHeading;
                 }
-                pathMarks.add(new PathMark(headingDelta, PathMark.PathMarkType.TURN_RIGHT));
+                RConsole.println("headingDelta: " + Float.toString(headingDelta));
+                pathMarks.add(new PathMark(headingDelta, PathMark.PathMarkType.TURN_LEFT));
                 break;
             }
             case TURN_RIGHT: {
+                RConsole.println("TURN_RIGHT");
                 float headingDelta;
                 float destinationHeading = sensorCollection.getHeading();
+                RConsole.println("LastHeading: " + Float.toString(lastHeading));
+                RConsole.println("DestinationHeading: " + Float.toString(destinationHeading));
                 if (destinationHeading < lastHeading) {
                     headingDelta = destinationHeading + (359.9f - lastHeading);
                 } else {
                     headingDelta = destinationHeading - lastHeading;
                 }
-                pathMarks.add(new PathMark(headingDelta, PathMark.PathMarkType.TURN_LEFT));
+                RConsole.println("headingDelta: " + Float.toString(headingDelta));
+                pathMarks.add(new PathMark(headingDelta, PathMark.PathMarkType.TURN_RIGHT));
                 break;
             }
         }
@@ -263,14 +268,17 @@ public class Driver {
     }
 
     public void displayPathData() {
-        LCD.clear();
-        LCD.drawString("PathData:", 0, 0);
+        RConsole.println("PathMarker:");
         int pos = 1;
         for (PathMark pathMark : pathMarks) {
             if (pathMark.getType() == PathMark.PathMarkType.BACKWARD || pathMark.getType() == PathMark.PathMarkType.FORWARD) {
-                LCD.drawString(pathMark.getType().name() + pathMark.getDegrees(), 0, pos);
+                RConsole.println("PathMarker " + Integer.toString(pos));
+                RConsole.println("\tType: " + pathMark.getType().name());
+                RConsole.println("\tDegrees Driven: " + Integer.toString(pathMark.getDegrees()));
             } else {
-                LCD.drawString(pathMark.getType().name() + pathMark.getHeadingDelta(), 0, pos);
+                RConsole.println("PathMarker " + Integer.toString(pos));
+                RConsole.println("\tType: " + pathMark.getType().name());
+                RConsole.println("\tHeadingDelte: " + Float.toString(pathMark.getHeadingDelta()));
 
             }
         }
