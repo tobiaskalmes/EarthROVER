@@ -1,3 +1,5 @@
+import lejos.nxt.comm.RConsole;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Tobias
@@ -6,4 +8,55 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Discovery {
+    private static Discovery instance;
+    private Driver driver;
+    private SensorCollection sensorCollection;
+
+    private Discovery() {
+        driver = Driver.getInstance();
+        sensorCollection = SensorCollection.getInstance();
+    }
+
+    public static Discovery getInstance() {
+        return instance == null ? instance = new Discovery() : instance;
+    }
+
+    public void discoverRoomBorders() throws InterruptedException {
+        RoomBorderData roomBorderData = new RoomBorderData();
+        //drive along the positive y-axis
+        RConsole.println("Heading: " + sensorCollection.getHeading());
+        driver.forward(50);
+        while (sensorCollection.getDistance() > 30) {
+            Thread.sleep(100);
+            RConsole.println("Heading: " + sensorCollection.getHeading());
+        }
+        driver.stop();
+        //Sensor distance + Driven distance (360° = 11cm) + distance of sensor to center of robot
+        roomBorderData.setyPositiveDistance(sensorCollection.getDistance() + (driver.getDrivenDistance() / 360 * 11) + 20);
+        //turn 90° right
+        RConsole.println("Turn right");
+        RConsole.println("Heading: " + sensorCollection.getHeading());
+        driver.turnRight(35, 90);
+        Thread.sleep(1000);
+        RConsole.println("Heading: " + sensorCollection.getHeading());
+        driver.forward(50);
+        while (sensorCollection.getDistance() > 30) {
+            Thread.sleep(200);
+            RConsole.println("Heading: " + sensorCollection.getHeading());
+        }
+        driver.stop();
+        roomBorderData.setyPositiveRightDistance(sensorCollection.getDistance() + (driver.getDrivenDistance() / 360 * 11) + 20);
+        //turn 180° left
+        RConsole.println("Turn left");
+        RConsole.println("Heading: " + sensorCollection.getHeading());
+        driver.turnLeft(35, 180);
+        Thread.sleep(1000);
+        RConsole.println("Heading: " + sensorCollection.getHeading());
+        driver.forward(50);
+        while (sensorCollection.getDistance() > 30) {
+            Thread.sleep(200);
+        }
+        driver.stop();
+        roomBorderData.setyPositiveLeftDistance(sensorCollection.getDistance() + (driver.getDrivenDistance() / 360 * 11) + 20);
+    }
 }

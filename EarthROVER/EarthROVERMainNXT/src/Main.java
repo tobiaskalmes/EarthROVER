@@ -27,10 +27,21 @@ public class Main {
                 System.exit(0);
             }
         });
-        RConsole.open();
-        RConsole.println("Test");
-        RConsole.println("Initialising...");
         sensorCollection = SensorCollection.getInstance();
+        RConsole.open();
+        while (true) {
+            RConsole.println("Distance: " + Integer.toString(sensorCollection.getDistance()));
+            doSleep(250);
+        }
+       /* try {
+            Discovery.getInstance().discoverRoomBorders();
+        } catch (InterruptedException e) {
+            LCD.clear();
+            LCD.drawString("ThreadException", 0, 1);
+        }*/
+
+        /*RConsole.println("Test");
+        RConsole.println("Initialising...");
         RConsole.println("Done!");
         doSleep(1500);
         RConsole.println("Driving...");
@@ -59,9 +70,9 @@ public class Main {
             LCD.clear();
             LCD.drawString("ThreadException", 0, 1);
         }
-        RConsole.println("Back Home!");
-        RConsole.close();
-        System.exit(0);
+        RConsole.println("Back Home!");*/
+        //RConsole.close();
+        //System.exit(0);
     }
 
     private static void doSleep(long duration) {

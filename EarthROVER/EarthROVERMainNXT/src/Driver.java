@@ -116,7 +116,7 @@ public class Driver {
         motorC.forward();
     }
 
-    private void turnRight(int power, float headingDelta) throws InterruptedException {
+    public void turnRight(int power, float headingDelta) throws InterruptedException {
         stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading + headingDelta;
@@ -151,7 +151,7 @@ public class Driver {
         motorC.forward();
     }
 
-    private void turnLeft(int power, float headingDelta) throws InterruptedException {
+    public void turnLeft(int power, float headingDelta) throws InterruptedException {
         stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading - headingDelta;
@@ -282,5 +282,9 @@ public class Driver {
 
             }
         }
+    }
+
+    public int getDrivenDistance(){
+        return motorB.getTachoCount();
     }
 }

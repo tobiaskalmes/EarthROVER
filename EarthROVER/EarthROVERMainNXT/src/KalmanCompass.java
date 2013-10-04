@@ -1,6 +1,7 @@
 import lejos.nxt.LCD;
 import lejos.nxt.addon.CompassHTSensor;
 import lejos.nxt.addon.GyroSensor;
+import lejos.nxt.comm.RConsole;
 
 /**
  * Created with IntelliJ IDEA.
@@ -130,6 +131,7 @@ public class KalmanCompass {
     }
 
     public float getHeading() {
+        //RConsole.println("Mean Heading: " + Float.toString(magneticSensor.getDegrees()));
         return heading;
     }
 

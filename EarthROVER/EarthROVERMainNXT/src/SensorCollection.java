@@ -14,6 +14,7 @@ import lejos.nxt.addon.IRSeeker;
 public class SensorCollection {
     private static SensorCollection instance;
     private UltrasonicSensor ultrasonicSensor;
+    //private EOPD eopd;
     private KalmanCompass kalmanCompass;
     private IRSeeker irSeeker;
 
@@ -29,6 +30,7 @@ public class SensorCollection {
         CompassHTSensor compass = new CompassHTSensor(SensorPort.S1);
         GyroSensor gyro = new GyroSensor(SensorPort.S2);
         ultrasonicSensor = new UltrasonicSensor(SensorPort.S3);
+        //eopd = new EOPD(SensorPort.S3, true);
         irSeeker = new IRSeeker(SensorPort.S4);
         kalmanCompass = KalmanCompass.getInstance(gyro, compass);
     }
@@ -39,6 +41,7 @@ public class SensorCollection {
 
     public int getDistance() {
         return ultrasonicSensor.getDistance();
+        //return (int) ((1095.35 / Math.sqrt(eopd.readRawValue())) - 12);
     }
 
     public IRSeeker getIrSeeker() {
