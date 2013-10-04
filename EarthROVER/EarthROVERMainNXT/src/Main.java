@@ -33,13 +33,13 @@ public class Main {
         sensorCollection = SensorCollection.getInstance();
         RConsole.println("Done!");
         doSleep(1500);
-        RConsole.println("Driving...");/*
+        RConsole.println("Driving...");
         RConsole.println("Forward 2s, 50");
         Driver.getInstance().forward(50);
-        doSleep(2000);*/
+        doSleep(2000);
         RConsole.println("Right 2s, 100");
         Driver.getInstance().turnRight(100);
-        doSleep(2000);/*
+        doSleep(2000);
         RConsole.println("Backward 3s, 30");
         Driver.getInstance().backward(30);
         doSleep(3000);
@@ -48,7 +48,7 @@ public class Main {
         doSleep(4000);
         RConsole.println("Forward 4s, 20");
         Driver.getInstance().forward(20);
-        doSleep(4000);           */
+        doSleep(4000);
         Driver.getInstance().stop();
         RConsole.println("Arrived!");
         Driver.getInstance().displayPathData();
