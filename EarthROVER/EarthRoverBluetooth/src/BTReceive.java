@@ -17,8 +17,13 @@ import java.io.IOException;
 
         public class BTReceive
         {
-            public static void main(String[] args) throws Exception
-            {
+        private static BTReceive instance;
+
+        public static BTReceive getInstance() {
+                return instance == null ? (instance = new BTReceive()) : instance;
+        }
+
+        public void BTReceive() {
         LCD.clear();
         LCD.drawString("Receiver wait...", 0, 0);
         LCD.refresh();
@@ -54,7 +59,5 @@ import java.io.IOException;
             LCD.drawString(ioe.getMessage(), 2, 0);
             LCD.refresh();
         }
-
-        Thread.sleep(4000);
-    }
+     }
 }

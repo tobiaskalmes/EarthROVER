@@ -15,10 +15,15 @@
 
     public class BTSend
     {
-        public static void main(String[] args) throws Exception
+        private static BTSend instance;
+
+        public static BTSend getInstance() {
+            return instance == null ? (instance = new BTSend()) : instance;
+        }
+      public void BTSend()
         {
             // Change this to the name of your receiver
-            String name = "MyNXT";
+            String name = "SlaveDriver";
 
             LCD.clear();
             LCD.drawString("Connecting...", 0, 0);
@@ -57,7 +62,8 @@
                 LCD.drawString(ioe.getMessage(), 2, 0);
                 LCD.refresh();
             }
-            Thread.sleep(4000);
+            //Thread.sleep(4000);
         }
     }
+
 

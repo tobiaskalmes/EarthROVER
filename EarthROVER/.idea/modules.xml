@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/EarthROVER.iml" filepath="$PROJECT_DIR$/EarthROVER.iml" />
       <module fileurl="file://$PROJECT_DIR$/EarthROVERArmNXT/EarthROVERArmNXT.iml" filepath="$PROJECT_DIR$/EarthROVERArmNXT/EarthROVERArmNXT.iml" />
       <module fileurl="file://$PROJECT_DIR$/EarthROVERMainNXT/EarthROVERMainNXT.iml" filepath="$PROJECT_DIR$/EarthROVERMainNXT/EarthROVERMainNXT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EarthROVERSender/EarthROVERSender.iml" filepath="$PROJECT_DIR$/EarthROVERSender/EarthROVERSender.iml" />
       <module fileurl="file://$PROJECT_DIR$/EarthRoverBluetooth/EarthRoverBluetooth.iml" filepath="$PROJECT_DIR$/EarthRoverBluetooth/EarthRoverBluetooth.iml" />
     </modules>
   </component>
