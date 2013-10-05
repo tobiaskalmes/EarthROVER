@@ -1,0 +1,247 @@
+%Needed commands
+\newcommand{\createifnotexists}[1]
+{
+	\newread\check 
+	\immediate\openin\check #1 
+	\ifeof\check
+		\newwrite\results 
+		\immediate\openout\results=#1
+		\immediate\closeout\results
+	\else
+		\closein\check
+	\fi
+}
+
+\newcommand{\TODO}[1]{\textcolor{red}{TODO: #1}}
+
+%new defines
+\newrefformat{cha}{Kapitel~\ref{#1}}
+\newrefformat{sec}{Abschnitt~\ref{#1}}
+\newrefformat{fig}{Abbildung~\ref{#1}}
+\newrefformat{tab}{Tabelle~\ref{#1}}
+\newrefformat{list}{Liste~\ref{#1}}
+\newrefformat{exmp}{Beispiel~\ref{#1}}
+\newrefformat{def}{Definition~\ref{#1}}
+\newrefformat{lst}{Listing~\ref{#1}}
+
+\newtheorem{example}{Beispiel}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\DeclareCaptionType{items}[Liste] 
+\renewcommand{\lstlistingname}{Listing}
+
+%Current caption
+\newcommand*{\currentcaption}{}
+
+%Captionized environments
+\newenvironment{capenumerate}[1][\currentcaption]
+{%BEGIN%	
+	\renewcommand*{\currentcaption}{#1}
+	\begin{center}
+		\captionsetup{type=items}
+		\begin{enumerate}
+}{%END%
+		\end{enumerate}
+		\caption{\currentcaption}	
+		\label{list:\currentcaption}
+		\addcontentsline{loi}{items}{\numberline{\theitems}\currentcaption}	
+	\end{center}	
+}
+
+\newenvironment{capitemize}[1][\currentcaption]
+{%BEGIN%	
+	\renewcommand*{\currentcaption}{#1}
+	\begin{center}
+		\captionsetup{type=items}
+		\begin{itemize}
+}{%END%
+		\end{itemize}
+		\caption{\currentcaption}	
+		\label{list:\currentcaption}
+		\addcontentsline{loi}{items}{\numberline{\theitems}\currentcaption}	
+	\end{center}	
+}
+
+\newenvironment{captabular}[2][\currentcaption]
+{%BEGIN%
+	\renewcommand*{\currentcaption}{#1}
+	\begin{table}[htbp]
+		\captionsetup{type=table}
+		\begin{center}
+		\begin{tabular}{#2}
+}{%END%
+		\end{tabular}
+		\end{center}
+		\caption{\currentcaption}
+		\label{tab:\currentcaption}
+	\end{table}
+}
+
+\newenvironment{captabular*}[3][\currentcaption]
+{%BEGIN%
+	\renewcommand*{\currentcaption}{#1}
+	\begin{table}[htbp]
+		\captionsetup{type=table}
+		\begin{center}
+		\begin{tabular*}{#2}{#3}
+}{%END%
+		\end{tabular*}	
+		\end{center}
+		\caption{\currentcaption}
+		\label{tab:\currentcaption}
+	\end{table}
+}
+
+%Doesn't work yet
+\newenvironment{captabularx}[3][\currentcaption]
+{%BEGIN%
+	\renewcommand*{\currentcaption}{#1}
+	\begin{table}[htbp]
+		\captionsetup{type=table}
+		\tabularx{#2}{#3}
+}{%END%
+		\endtabularx
+		\caption{\currentcaption}
+		\label{tab:\currentcaption}
+	\end{table}
+}
+
+\newenvironment{capfigure}[1][\currentcaption]
+{%BEGIN%
+	\renewcommand*{\currentcaption}{#1}	
+		\begin{figure}[H]
+			\captionsetup{type=figure}
+				\begin{center}
+}{%END%
+				\end{center}
+			\caption{\currentcaption}
+			\label{fig:\currentcaption}		
+		\end{figure}
+}
+
+\newenvironment{capexample}[1]
+{%BEGIN%
+	\begin{example}[#1]
+		\label{exmp:#1}
+}{%END%
+	\end{example}
+}
+
+\newenvironment{capdefinition}[1]
+{%BEGIN%
+	\begin{definition}[#1]
+		\label{def:#1}
+}{%END%
+	\end{definition}
+}
+
+\lstnewenvironment{caplisting}[2]  
+{%BEGIN%
+	\singlespacing  
+	\lstset{label=lst:#1, caption=#1} %Caption and Label
+	%\lstset{basicstyle=\small\ttfamily, tabsize=4}
+	%\lstset{breaklines=true, breakatwhitespace=true, postbreak=\space}
+	%\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt}
+	%\lstset{keywordstyle=\color{blue}}
+	%\lstset{stringstyle=\itshape\color{green}, showstringspaces=false}
+	%\lstset{commentstyle=\itshape\color{red}}	
+	\lstset{#2}
+}{} 
+
+%References to captionized environments
+\newcommand{\caplistref}[1]{\prettyref{list:#1}}
+\newcommand{\captabularref}[1]{\prettyref{tab:#1}}
+\newcommand{\capfigureref}[1]{\prettyref{fig:#1}}
+\newcommand{\capexampleref}[1]{\prettyref{exmp:#1}}
+\newcommand{\capdefinitionref}[1]{\prettyref{def:#1}}
+\newcommand{\caplistingref}[1]{\prettyref{lst:#1}}
+
+
+    
+%Redefine and create lists  
+\renewcommand{\listoffigures}{
+	\addcontentsline{toc}{chapter}{\listoffiguresname}
+	\listoffigures
+	\cleardoublepage
+}
+
+\renewcommand{\listoftables}{
+	\addcontentsline{toc}{chapter}{\listoftablesname}
+	\listoftables
+	\cleardoublepage
+}
+
+\newcommand{\listoflists}{%
+	\chapter{Listenverzeichnis}
+	\begingroup
+		\makeatletter
+		\createifnotexists{\jobname.loi}
+		\input{\jobname.loi}
+		\expandafter\newwrite\csname tf@loi\endcsname
+		\immediate\openout \csname tf@loi\endcsname \jobname.loi\relax
+	\endgroup
+	\cleardoublepage
+}
+
+\newcommand{\listoftheorems}[2][Theorems]{
+	%\let\cleardoublepage\clearpage
+	%\newpage
+	\ifnum\value{curr#1ctr}>0
+		\chapter{#2}
+		\begin{minipage}[t]{\textwidth}	
+			\addtolength{\marginparwidth}{-18pt}
+			\addtolength{\leftskip}{18pt}
+			\addtolength{\textwidth}{-18pt}
+			\begin{minipage}[t]{\textwidth}
+				\listtheorems{#1}
+			\end{minipage}
+		\end{minipage}
+		\cleardoublepage	
+	\fi
+}
+
+\newcommand{\listofexamples}{
+	\listoftheorems[example]{Beispielverzeichnis}
+	\cleardoublepage
+}
+
+\newcommand{\listofdefinitions}{
+	\listoftheorems[definition]{Definitionsverzeichnis}
+	\cleardoublepage
+}
+
+\renewcommand{\lstlistlistingname}{Listingverzeichnis}
+\newcommand{\listoflistings}{
+	%\ifnum\value{lstlisting}>0
+		\lstlistoflistings
+		\cleardoublepage
+	%\fi
+}
+
+\newcommand{\listofabbreviations}{
+	\printglossary[
+			title=Abkürzungsverzeichnis,
+			toctitle=Abkürzungsverzeichnis,
+			style=altlist,
+			type=\acronymtype
+	]
+	\cleardoublepage
+}
+
+\newcommand{\listofglossaryentries}{
+	\printglossary[
+			title=Glossar,
+			toctitle=Glossar,
+			style=altlist
+	]
+	\cleardoublepage
+}
+
+\newcommand{\listofbibliographyentries}{
+	%\nocite{*}
+	\printbibliography[
+			title=Literaturverzeichnis,
+			heading=bibintoc
+	]
+	\cleardoublepage
+}
+

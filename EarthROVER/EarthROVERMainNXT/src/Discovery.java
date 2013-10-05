@@ -21,6 +21,29 @@ public class Discovery {
         return instance == null ? instance = new Discovery() : instance;
     }
 
+    public void searchBall() throws InterruptedException {
+        for (int i = 0; i < 3; ++i) {
+            searchBallForward();
+            searchBallTurnRight();
+        }
+        driver.stop();
+    }
+
+    private void searchBallForward() throws InterruptedException {
+        driver.forward(75);
+        while (sensorCollection.getDistance() > 35) {
+            Thread.sleep(200);
+        }
+    }
+
+    private void searchBallTurnRight() throws InterruptedException {
+        driver.turnRight(50);
+        while (sensorCollection.getDistance() < 75) {
+            Thread.sleep(200);
+        }
+        driver.turnRight(50, 40, true);
+    }
+
     public void discoverRoomBorders() throws InterruptedException {
         RoomBorderData roomBorderData = new RoomBorderData();
         //drive along the positive y-axis
@@ -36,7 +59,7 @@ public class Discovery {
         //turn 90° right
         RConsole.println("Turn right");
         RConsole.println("Heading: " + sensorCollection.getHeading());
-        driver.turnRight(35, 90);
+        driver.turnRight(50, 90);
         Thread.sleep(1000);
         RConsole.println("Heading: " + sensorCollection.getHeading());
         driver.forward(50);
@@ -49,7 +72,7 @@ public class Discovery {
         //turn 180° left
         RConsole.println("Turn left");
         RConsole.println("Heading: " + sensorCollection.getHeading());
-        driver.turnLeft(35, 180);
+        driver.turnLeft(50, 180);
         Thread.sleep(1000);
         RConsole.println("Heading: " + sensorCollection.getHeading());
         driver.forward(50);

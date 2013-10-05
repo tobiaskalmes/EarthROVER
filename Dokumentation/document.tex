@@ -1,0 +1,36 @@
+
+\include{utils/header}
+\include{utils/captions}
+
+\makeindex
+
+\begin{document}
+	%\nocite{*}
+
+	\frontmatter
+		\include{chapters/title}
+		\include{chapters/abstract}
+		\include{glossary/glossary}
+		\begin{singlespace}			
+			\tableofcontents
+		\end{singlespace}
+
+	
+	\mainmatter
+		\include{chapters/chapter1}
+		\include{chapters/chapter2}
+		\include{chapters/chapter3}
+		
+		
+	\appendix	
+		%\listofabbreviations	
+		%\listofglossaryentries		
+		\listofbibliographyentries
+		\listoffigures
+		%\listoflistings
+		\listoftables
+		%\listoflists
+		%\listofexamples
+		%\listofdefinitions	
+	
+\end{document}

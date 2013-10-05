@@ -116,7 +116,7 @@ public class Driver {
         motorC.forward();
     }
 
-    public void turnRight(int power, float headingDelta) throws InterruptedException {
+    public void turnRight(int power, float headingDelta, boolean addPathMark) throws InterruptedException {
         stop(false);
         float startHeading = sensorCollection.getHeading();
         float destinationHeading = startHeading + headingDelta;
@@ -136,6 +136,13 @@ public class Driver {
         while (sensorCollection.getHeading() < destinationHeading) {
             Thread.sleep(100);
         }
+        if (addPathMark) {
+            pathMarks.add(new PathMark(headingDelta, PathMark.PathMarkType.TURN_RIGHT));
+        }
+    }
+
+    public void turnRight(int power, float headingDelta) throws InterruptedException {
+        turnRight(power, headingDelta, false);
     }
 
     public void turnLeft(int power) {
@@ -265,6 +272,7 @@ public class Driver {
                 }
             }
         }
+        stop(false);
     }
 
     public void displayPathData() {
@@ -284,7 +292,7 @@ public class Driver {
         }
     }
 
-    public int getDrivenDistance(){
+    public int getDrivenDistance() {
         return motorB.getTachoCount();
     }
 }

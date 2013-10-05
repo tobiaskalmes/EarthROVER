@@ -2,7 +2,6 @@ import lejos.nxt.Button;
 import lejos.nxt.ButtonListener;
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
-import lejos.nxt.comm.RConsole;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,17 +27,23 @@ public class Main {
             }
         });
         sensorCollection = SensorCollection.getInstance();
-        RConsole.open();
-        while (true) {
-            RConsole.println("Distance: " + Integer.toString(sensorCollection.getDistance()));
-            doSleep(250);
-        }
-       /* try {
-            Discovery.getInstance().discoverRoomBorders();
+        //Console.open();
+        try {
+            Discovery.getInstance().searchBall();
         } catch (InterruptedException e) {
             LCD.clear();
             LCD.drawString("ThreadException", 0, 1);
-        }*/
+        }
+        LCD.clear();
+        LCD.drawString("Discovery done", 0, 0);
+        Sound.buzz();
+        doSleep(3000);
+        try {
+            Driver.getInstance().driveHomeSimple();
+        } catch (InterruptedException e) {
+            LCD.clear();
+            LCD.drawString("ThreadException", 0, 1);
+        }
 
         /*RConsole.println("Test");
         RConsole.println("Initialising...");
