@@ -36,5 +36,7 @@ public class Main {
                 BTReceive.getInstance().BTReceive();
             }
         });
+        while (true){}
+
     }
 }

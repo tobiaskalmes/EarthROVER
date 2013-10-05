@@ -36,5 +36,6 @@ public class Main {
             BTSend.getInstance().BTSend();
         }
     });
+        while (true){}
 }
 }

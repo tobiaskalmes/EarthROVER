@@ -24,13 +24,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EarthROVERSender/EarthROVERSender.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EarthROVERSender/src/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java" />
-      <change type="MOVED" beforePath="C:\Users\golo\Documents\GitHub\EarthROVER\EarthROVER\EarthRoverBluetooth\src\BTSend.java" afterPath="$PROJECT_DIR$/EarthROVERSender/src/BTSend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EarthRoverBluetooth/src/BTReceive.java" afterPath="$PROJECT_DIR$/EarthRoverBluetooth/src/BTReceive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EarthRoverBluetooth/EarthRoverBluetooth.iml" afterPath="$PROJECT_DIR$/EarthRoverBluetooth/EarthRoverBluetooth.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EarthROVERSender/src/BTSend.java" afterPath="$PROJECT_DIR$/EarthROVERSender/src/BTSend.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EarthROVERSender/src/Main.java" afterPath="$PROJECT_DIR$/EarthROVERSender/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java" afterPath="$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="3cc71839-ab61-4f33-8bec-0bd18faf9dc5" name="Don't commit" comment="">
@@ -45,7 +41,7 @@
     <file path="/LoggerNames.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380297856017" ignored="false" />
     <file path="/fragment.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380989864004" ignored="false" />
     <file path="/SensorRequestHandler.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380298259530" ignored="false" />
-    <file path="/Dummy.txt" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380987458292" ignored="false" />
+    <file path="/Dummy.txt" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380991668856" ignored="false" />
     <file path="/ExtendedUltrasonicSensor.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380303624852" ignored="false" />
     <file path="/ExtendedI2CSensor.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380303594571" ignored="false" />
     <file path="/KalmanCompass.java" changelist="433e4d7e-4574-49eb-a692-bdc9e13c5e0f" time="1380575235250" ignored="false" />
@@ -154,6 +150,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EarthROVERMainNXT/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="20" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Arm.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/src/Arm.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -165,10 +170,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BTReceive.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BTReceive.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EarthRoverBluetooth/src/BTReceive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="51" selection-start="768" selection-end="768" vertical-scroll-proportion="0.0">
+            <state line="38" column="146" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.65039575">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,7 +184,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="69" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
+            <state line="66" column="0" selection-start="1946" selection-end="1973" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,20 +193,10 @@
       <file leaf-file-name="BTSend.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EarthROVERSender/src/BTSend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="8" selection-start="399" selection-end="521" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EarthROVERArmNXT.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/EarthROVERArmNXT.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="69" selection-start="402" selection-end="465" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -227,7 +222,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EarthROVERSender/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="42" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+            <state line="15" column="57" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -235,10 +230,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="44" selection-start="645" selection-end="645" vertical-scroll-proportion="0.46973684">
+            <state line="21" column="16" selection-start="632" selection-end="677" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -285,17 +280,17 @@
         <option value="$PROJECT_DIR$/EarthRoverBluetooth/src/BTSend.java" />
         <option value="$PROJECT_DIR$/EarthRoverBluetooth/EarthRoverBluetooth.iml" />
         <option value="$PROJECT_DIR$/EarthROVERSender/EarthROVERSender.iml" />
-        <option value="$PROJECT_DIR$/EarthROVERSender/src/BTSend.java" />
-        <option value="$PROJECT_DIR$/EarthROVERSender/src/Main.java" />
         <option value="$PROJECT_DIR$/EarthRoverBluetooth/src/BTReceive.java" />
         <option value="$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java" />
+        <option value="$PROJECT_DIR$/EarthROVERSender/src/Main.java" />
+        <option value="$PROJECT_DIR$/EarthROVERSender/src/BTSend.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="56" />
     <option name="y" value="64" />
-    <option name="width" value="1523" />
+    <option name="width" value="1524" />
     <option name="height" value="962" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -858,11 +853,15 @@
       <created>1380986151046</created>
       <updated>1380986151046</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Sender and Reciver">
+      <created>1380990829178</created>
+      <updated>1380990829178</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="64" width="1523" height="962" extended-state="0" />
+    <frame x="56" y="64" width="1524" height="962" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33540374" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -873,11 +872,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31552795" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.3997262" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2183436" sideWeight="0.684472" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21819426" sideWeight="0.684472" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15454546" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -892,7 +892,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31552795" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -939,7 +938,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Bluetooth Modul" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sender and Reciver" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -965,6 +964,7 @@
     <MESSAGE value="-" />
     <MESSAGE value="- finish the Arm" />
     <MESSAGE value="add Bluetooth Modul" />
+    <MESSAGE value="Sender and Reciver" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1005,13 +1005,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EarthROVERMainNXT/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="20" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/EarthROVERArmNXT.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="69" selection-start="402" selection-end="465" vertical-scroll-proportion="0.0">
@@ -1040,22 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EarthROVERSender/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="42" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="69" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/src/Arm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="4" selection-start="299" selection-end="327" vertical-scroll-proportion="0.0">
@@ -1065,11 +1042,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/EarthROVERMainNXT/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="20" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EarthROVERArmNXT/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="1946" selection-end="1973" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EarthROVERSender/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="57" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/EarthROVERSender/src/BTSend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="399" selection-end="521" vertical-scroll-proportion="0.0">
+        <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="16" selection-start="632" selection-end="677" vertical-scroll-proportion="0.0">
+          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1077,16 +1085,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EarthRoverBluetooth/src/BTReceive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="51" selection-start="768" selection-end="768" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EarthRoverBluetooth/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="44" selection-start="645" selection-end="645" vertical-scroll-proportion="0.46973684">
+        <state line="38" column="146" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.65039575">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
