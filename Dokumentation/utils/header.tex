@@ -1,0 +1,149 @@
+\documentclass[	12pt,										%fontsize 12pt
+								twoside,								%singlesided
+								a4paper,								%Papierformat A4
+								headsepline,						%seperate header with line
+								DIV15,
+								BCOR2cm,
+								titlepage,							%use titlepage			
+								parskip=half,
+								cleardoublepage=empty,
+								%listof=flat,
+								toc=listof, 						%remove warning
+								%intoc, 								%remove warning
+								%liststotoc,
+]{scrbook}
+\usepackage{datatool}
+%\usepackage{txfonts} %Schriftart Times New Roman
+\usepackage[numbib]{tocbibind}
+\usepackage{graphicx}%load before hyperref %remove warning
+\usepackage[		
+				pdfborder={0 0 0},		%print links without borders	
+				pdftitle=Seminar,
+				pdfsubject={Seminar},
+				pdfauthor={Tobias Kalmes},
+				linktocpage=true,		%seitenzahlen im toc als links darstellen
+				colorlinks=false,
+				linkcolor=blue,
+				anchorcolor=blue, 		%Color for anchor text
+				citecolor=blue,			%Color for bibliographical citations in text.
+				filecolor=blue,			%Color for URLs which open local files.
+				menucolor=blue,			%Color for Acrobat menu items.
+				runcolor=blue,			%Color for run links (launch annotations).
+				urlcolor=blue,			%Color for linked URLs. 	
+				bookmarksopen=true,
+				breaklinks=true,
+				hyperfootnotes=false %remove warning
+				]{hyperref}
+\usepackage[thmmarks,hyperref]{ntheorem}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage[right]{eurosym}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing, labelfont=white, textfont=white}
+\usepackage[
+					backend=biber,
+					style=alphabetic,
+					natbib=true,
+%					citestyle=authoryear-icomp,
+					autocite=footnote
+					]{biblatex}
+
+\usepackage{scrhack} %remove warning
+
+\usepackage{prettyref}
+%\usepackage{titleref}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{ae}
+\usepackage{times}
+\usepackage[nonumberlist, acronym, toc, section]{glossaries}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{wasysym}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage{ulem}
+
+
+
+\usepackage{textcomp}
+
+%prepare stuff
+\restylefloat{figure}
+\restylefloat{table}
+%\setcounter{tocdepth}{5} 
+
+\definecolor{mediumslateblue}{rgb}{0.48,0.41,0.93}
+\definecolor{crimson}{rgb}{0.86,0.0,0.24}
+\definecolor{darkgreen}{rgb}{0.196,0.8,0.196}%{50,205,50}
+\definecolor{mediumorchid}{rgb}{0.73,0.08,0.827}
+
+%define listing style
+\lstset
+{
+	basicstyle = \setstretch{1}\footnotesize\ttfamily\color{black}, %Standardschrift
+	numbers = left,
+	numberstyle = \tiny,
+	%stepnumber = 2, %Abstand zwischen Zeilennummern
+	numbersep = 5pt, %Abstand zwischen Nummern und Text
+	tabsize = 2,
+	extendedchars = true,
+	breaklines = true,
+	breakatwhitespace = true,
+	keywordstyle = \color{blue},
+	frame = b,
+	stringstyle = \color{black}, %Farbe der Strings
+	showspaces = false,
+	showtabs = false,
+	xleftmargin = 17pt,
+	framexleftmargin = 5pt,
+	framexrightmargin = 4pt,
+	framexbottommargin = 4pt,
+	%backgroundcolor = \color{lightgray},
+	showstringspaces = false,
+	%commentstyle = \itshape\color{darkgreen}
+}
+
+%define languages for listings
+\lstdefinelanguage{XML}
+{
+	%morecomment = [s]{<?}{?>},
+	morecomment = [s]{<!--}{-->},
+	morestring = [b]",
+	%morestring = [s]{>}{<},
+	identifierstyle = \color{mediumslateblue},
+	keywordstyle = \color{crimson},
+	stringstyle = \itshape\color{mediumorchid},
+	commentstyle = \itshape\color{darkgreen},
+	morekeywords = {version, encoding, type, startswith, autocommit, key, name, condition}
+}
+
+\lstdefinelanguage{OWL}
+{
+	%morecomment = [s]{<!--}{-->},
+	morestring = [b]",
+	%morestring = [s]{>}{<},
+	identifierstyle = \color{mediumslateblue},
+	keywordstyle = \color{crimson},
+	stringstyle = \itshape\color{mediumorchid},
+	commentstyle = \itshape\color{darkgreen},
+	morekeywords = {and, or, not, only, some}
+}
+
+\lstloadlanguages{Java,XML,C++}
+\bibliography{literature/literature}
+\theoremlisttype{all}
+%\makeglossary
+%Footnotes on first appearance
+%\defglsdisplayfirst[main]{#1#4\protect\footnote{#2}}
+\makeglossaries
