@@ -93,9 +93,6 @@ Wie auf der Abbildung zu sehen ist liefert der Sensor neun Werte. Um den Ball zu
 
 Von hier an dreht sich der Roboter immer solange bis der Wert 5 das stärkste Signal liefert. Dann fährt er auf das Signal zu und korrigiert bei Bedarf die Richtung. Sobald er in der passenden Entfernung zum Ball ist kann der Greifarm den Ball dann aufheben.
 
-\section{Greifarm}
-\TODO{Für Jan: ergänzen}
-
 \section{Raspberry Pi}
 
 Im Ursprünglichen Konzept sollte der Raspberry Pi eine zentrale Rolle für den Rover spielen. Jedoch wurden durch technische Probleme nur eine einfachere Lösung realisiert.
@@ -131,13 +128,12 @@ Zur Übertragtung des Videostreams wurde, das für den Raspberry Pi selbst entwi
 	\includegraphics[width=8cm]{images/raspi/aufbau}
 \end{capfigure}
 
+Aufgrund der Einschränkungen wurde nur eine einfachere Lösung implementiert. Zuerst wurde ein auf Debian basiertes Linux auf die SD Karte installiert. Anschließend wurde die USB Kamera installiert und einen Apache2 als Webserver. Der Webserver wurde dann mit der Kamera verknüpft und lieferte nun auf einer Webseite, dass aktuelle Livebild.
+Da jedoch bei den fahrten des Rovers eine Lösunge über ein Ethernetkabel unddenkbar ist wurde nun ein WLAN USB Stick angeschlossen, installiert und als ein kompletter Access Point umfunktioniert. Dadurch ist es möglich sich, auf dem nun aufgebauten WLAN mit einem Browser einzuloggen und die fahrt des Rovers zu beobachten. Für die Montage am Rover wurde auch noch ein Gehäuse aus Lego konstruiert.
 
-Aufgrund der Einschränkungen wurde nur eine einfachere Lösung implementiert. Zuerst wurde die Möglichkeit geschaffen sich per Browser ein Livebild
-
-\begin{capfigure}[Komponenten]
+\begin{capfigure}[Konstruktion]
 	\includegraphics[width=8cm]{images/raspi/konstruktion}
 \end{capfigure}
 
-Der Raspberry PI baut dabei ein WLAN auf, streamt ein Livebild einer USB Kamera mit Hilfe des Webservers und liefert die Möglichkeit die Fahrt des Rovers per Browser zu verfolgen.
 
-\subsection{Verbesserungs Möglichkeiten}
+
