@@ -96,5 +96,31 @@ Von hier an dreht sich der Roboter immer solange bis der Wert 5 das stärkste Si
 \section{Greifarm}
 \TODO{Für Jan: ergänzen}
 
-\section{Pi}
-\TODO{Für Jan: ergänzen}
+\section{Raspberry Pi}
+
+Im Ursprünglichen Konzept sollte der Raspberry Pi eine zentrale Rolle für den Rover spielen. Jedoch wurden durch technische Probleme nur eine einfachere Lösung realisiert.
+
+\subsection{Ursprüngliche Konzeption} 
+
+Das Urprüngliche Konzept sah vor, dass der über ein Raspberry PI ein WLAN aufgespannt wird über deren Kameramodul ein Livebild übertragen wird, man die aktuellen Werte der Sensoren auslesen kann und einige Remotefunktionen als Fernsteuerung ausführen.
+
+\subsection{Technische Schwierigkeiten}
+
+Bei der Umsetzung gab es einige technische Schwierigkeiten, die leider nicht gelöst werden konnten.
+
+\subsubsection{Ansteuerung über den Raspberry Pi}
+
+Wie im ursprünglichen Konzept vorgesehen, wollten wir die NXT per über USB an den Raspberry Pi anschließen und ansteuern. Als Programmiersprache wurde dazu NXT-Python ausgewählt. Dadurch was es auch nicht möglich, die Daten der Sensoren auf den Webserver zu übertragen.
+
+\subsubsection{Kameramodul}
+
+Zur Übertragtung des Videostreams wurde, das für den Raspberry Pi selbst entwickelte Kameramodul ausgewählt. Dabei stellte sich schnell heraus, dass die Möglichkeiten und Ansteuerungen dieses Moduls bei weitem nicht die Leistungsfähigkeit haben, wie Ansteuerungsmöglichkeiten einer normalen USB Kamera. Aus diesem Grund wurde eine normale USB Kamera ausgewählt.
+
+\subsection{Umsetzung}
+
+Aufgrund der Einschränkungen wurde nur eine einfachere Lösung implementiert. Zuerst wurde die Möglichkeit geschaffen sich per Browser ein Livebild
+
+
+Der Raspberry PI baut dabei ein WLAN auf, streamt ein Livebild einer USB Kamera mit Hilfe des Webservers und liefert die Möglichkeit die Fahrt des Rovers per Browser zu verfolgen.
+
+\subsection{Verbesserungs Möglichkeiten}
