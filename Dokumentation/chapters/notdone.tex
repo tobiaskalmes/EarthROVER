@@ -1,2 +1,20 @@
-\chapter{Nicht Umgesetztes}
-\TODO{besseren Namen für das Kapitel finden.}
+\chapter{Nicht Umgesetzte Funktionen}
+\section{Pi-zu-Brick-Kommunikation}
+\label{lbl:ptbcomm}
+Da wir nicht wie anfangs geplant die \textit{NXT-Bricks} via USB mit dem RaspberryPi verbinden konnten blieb uns an dieser Stelle nur die Kommunikation via Bluetooth. Hierfür fehlt uns allerdings die Hardware(ein Bluetooth-Dongle). Daher mussten wir diesen Teil streichen. Ohne diesen Teil funktionieren auch andere Teile der Vision nicht.
+
+\section{Webservices}
+Es war geplant die Kommunikation zwischen dem RaspberryPi und dem Web-Interface über RESTful Webservices zu regeln. Dafür hätten wir auf dem RaspberryPi einen kleinen Webserver laufen lassen(einen Eigenen) und würden dort zum einen die Sensordaten anbieten als auch Befehle für den \textit{EarthROVER} annehmen. Die Webservices selbst waren mit Jetty geplant. Die grundsätzliche Umsetzung der Webservices inklusive Tests wurde durchgeführt. Hier gab es keine Probleme. Da wie in \nameref{lbl:ptbcomm} beschrieben keine Kommunikation zwischen RaspberryPi und dem \textit{EarthROVER} möglich ist können die Webservices auch keine Daten liefern bzw. keine Befehle weitergeben.
+
+\section{Webseite}
+\TODO{Für Jan: Beschreib hier kurz was die Webseite hätte machen sollen.}
+
+\section{Fernsteuerung über Webinterface}
+\TODO{Für Jan: Kurz beschreiben}
+
+\section{Ball finden}
+Da uns in der Endphase der Infrarotball gefehlt hat war es uns nicht mehr möglich die Suche einzubinden. Die Überlegung wie die Suche umgesetzt werden kann wurden gemacht. Da wir aber keine Möglichkeit hatten die Umsetzung zu testen haben wir es dabei belassen die Umsetzung zu beschreiben.
+
+\section{Brick-zu-Brick-Kommunikation}
+Bei unserer ursprünglichen Idee hätten wir keine Brick-zu-Brick-Kommunikation benötigt. Da es angedacht war, dass der RaspberryPi die gesamte Logik ausführt. Hierfür mangelte es und am Ende dann an der Zeit. 
+
