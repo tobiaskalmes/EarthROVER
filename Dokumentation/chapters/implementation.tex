@@ -8,10 +8,16 @@ Zu Beachten ist hierbei, dass durch die Benutzung der RXC-Kabel die Motoren kein
 
 Dies stellt in unserem Szenario allerdings kein Problem dar, da es für das Fahren bei unserer Konstruktion ausreicht bei einem der vier Motoren in der Lage zu sein den Motor reguliert zu betreiben.
 
+Da wir was die Anzahl der Sensoren betrifft eingeschränkt sind und somit lediglich einen Ultraschallsensor zum Fahren verwenden haben wir uns dazu entschieden diesen an der linken Seite anzubringen. Beim der Erkundung fährt der \textit{EarthROVER} entweder geradeaus oder er dreht sich nach rechts. Da der Ultraschallsensor an der linken Seite angebracht ist können wir so besser vermeiden, dass der Roboter hängen bleibt.
+
 \subsection{Orientierung}
 Zur Orientierung verwendet der \textit{EarthROVER} Kompass-werte. Um Fehlmessungen des Kompass abzuschwächen wurde ein Kalmanfilter verwendet. Für den Kalmanfilter wird neben dem \textit{HiTechnic Compass Sensor} noch ein \textit{HiTechnic Gyro Sensor} verwendet.
 
+Der Kalmanfilter korrigiert den Wert des Kompasses anhand der gemessenen Beschleunigung des Gyro-Sensors. Die Veränderung der Werte wird geglättet und ist somit präziser.
+
 Neben dem eigentlichen Kalmanfilter werden die gelesenen Werte der beiden Sensoren vor dem Filtern über einen kurzen Zeitraum gemittelt um Ausreißer auszugleichen.
+
+Es sei noch zu erwähnen, dass die Sensoren sehr anfällig auf Interferenzen von Magnetfeldern sind. Selbst der \textit{NXT-Brick} beeinflusst bereits den Sensor. Daher sind die Werte auch gefiltert nicht genau und weichen je nach Umgebung stark von der Realität ab.
 
 \subsection{Weg merken}
 Damit der \textit{EarthROVER} sich den Weg möglichst präzise Merken kann haben wir uns dazu entschieden, dass der \textit{EarthROVER} sich entweder geradlinig bewegt oder auf der Stelle dreht. Er kann also keine Kurven fahren. Dies hat den Vorteil, dass wir präzise Werte haben um den Weg aufzuzeichnen.
@@ -54,17 +60,33 @@ $\beta = arcos((a^2 + c^2 - b^2)2ac)$
 Nun können wir auch unser $\beta$ berechnen. Damit haben wir alles um zum Ausgangspunkt zurück zu fahren.
 
 Für den nächsten Schritt werden dann wie folgt die Werte zugewiesen:\\
+\\
 \begin{tabular}[htbp]{|l|l|}
+	\hline
 	Neue Werte & alte Werte \\
 	\hline
 	$b$ & $c$ \\
 	\hline
 	$a$ & Fahrstrecke des nächsten Schritts \\
 	\hline
-	$\gamma$ & \\
+	$\gamma$ & $180° - \beta$\\
+	\hline
 \end{tabular}
 
+Auf diese Art kennt der \textit{EarthROVER} zu jeder Zeit den direkten Weg zum Ausgangspunkt. Diese Variante hat einen deutlich kürzeren Weg als die erste Variante.
+
+Hätten wir die Erkennung und Aufzeichnung von Hindernissen implementiert müsste natürlich an dieser Stelle noch sichergestellt werden, dass auf dem Weg kein Hindernis ist. Zudem könnten auf dem direkten Weg bisher unbekannte Hindernisse auftreten.
+
 \section{Ball finden}
+Damit sich der Ball von regulären Objekten unterscheiden lässt wird ein Infrarotball verwendet. Um diesen zu finden benutzen wir den \textit{HiTechnic Infrared Seeker}.
+
+\begin{capfigure}[HiTechnic Infrared Seeker - Sensoren]
+	\includegraphics[width=5cm]{images/implementation/irseeker}
+\end{capfigure}
+
+Wie auf der Abbildung zu sehen ist liefert der Sensor neun Werte. Um den Ball zu finden muss man dafür sorgen, dass der Wert 5 am stärksten ist. Dazu fährt der \textit{EarthROVER} zuerst normal und sucht die Umgebung ab, sobald er eines der neun Signale den Ball bemerkt stoppt er den normalen Suchmodus und steuert von nun an über den \textit{HiTechnic Ifrared Seeker}.
+
+Von hier an dreht sich der Roboter immer solange bis der Wert 5 das stärkste Signal liefert. Dann fährt er auf das Signal zu und korrigiert bei Bedarf die Richtung. Sobald er in der passenden Entfernung zum Ball ist kann der Greifarm den Ball dann aufheben.
 
 \section{Greifarm}
 
