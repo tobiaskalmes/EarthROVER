@@ -2,7 +2,9 @@
 \section{Fahren}
 Da der \textit{EarthROVER} mit vier Ketten fahren soll bedarf es hier einer besonderen Lösung. Um vier Motoren an einem \textit{NXT-Brick} zu verwenden zu können werden zwei Motoren(auf einer Seite) mit Hilfe von RCX-Motorkabeln verbunden. Hierzu werden drei RCX-Kabel verwendet. Das erste Kabel wird in den NXT gesteckt. An das andere Ende wird ein zweites RCX-Kabel aufgesteckt. Ein drittes Kabel wird verkehrt herum aufgesteckt. Hierdurch werden beide Motoren entgegengesetzt drehen. Da bei unserem Aufbau auf der Basis die Motoren auf einer Seite entgegensetzt sind passt das so genau. 
 
-\TODO{Bild der RCX-Kabel einfügen}
+\begin{capfigure}[RCX-Kabel]
+	 \includegraphics[width=\textwidth]{images/implementation/rcxcables}
+\end{capfigure}
 
 Zu Beachten ist hierbei, dass durch die Benutzung der RXC-Kabel die Motoren keine Tachowerte mehr liefern. Man kann die Motoren als nicht reguliert verwenden und auch keine Tachowerte auslesen.
 
