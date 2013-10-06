@@ -1,2 +1,16 @@
 \chapter{Sprachen}
 \TODO{besseren Namen für das Kapitel finden.}
+Als Programmiersprachen kamen \gls{nxc}, \gls{lejos} und \gls{pynxt}. 
+
+\section{pyNXT}
+Da wir eine RaspberryPi als Kernstück des \textit{EarthROVERs} verwenden wollten bot sich pyNTX an. Mit pyNXT kann man einen Brick mit Hilfe von Python programmieren. pyNXT verwendet das \gls{lcp} um mit dem \textit{NXT-Brick} zu kommunizieren. Daher stehen mit pyNXT nur Fernsteuerungsfunktionen zur Verfügung.
+
+\TODO{LCP genauer beschreiben}
+
+Da Python kein echtes Multithreading unterstützt haben wir uns dagegen entschieden pyNXT zu verwenden.
+
+\section{NXC}
+NXC war unsere zweite Option. Mit NXC stehen uns alle notwendigen Funktionen zur Verfügung. Da wir für allerdings Webservices geplant hatten und unsere Erfahrungen mit Webservices in Java besser sind haben wir uns auch gegen NXC entschieden.
+
+\section{leJOS}
+Mit leJOS hat man die Möglichkeit wie sowohl über \gls{lcp} mit dem \textit{NXT-Brick} zu kommunizieren als auch den \textit{NXT-Brick} direkt programmieren. 
