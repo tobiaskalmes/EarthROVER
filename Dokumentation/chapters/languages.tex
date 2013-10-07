@@ -12,4 +12,8 @@ Da Python kein echtes Multithreading unterstützt haben wir uns dagegen entschie
 NXC war unsere zweite Option. Mit NXC stehen uns alle notwendigen Funktionen zur Verfügung. Da wir für allerdings Webservices geplant hatten und unsere Erfahrungen mit Webservices in Java besser sind haben wir uns auch gegen NXC entschieden.
 
 \section{leJOS}
-Mit leJOS hat man die Möglichkeit wie sowohl über \gls{lcp} mit dem \textit{NXT-Brick} zu kommunizieren als auch den \textit{NXT-Brick} direkt programmieren. Unsere Wahl fiel auf leJOS, da es sich hiermit komfortabel arbeiten lässt. Unter anderem bietet leJOS eine RemoteConsole. Mit deren Hilfe kann sich ein PC mit einem Brick verbinden und Consolenausgaben empfangen. Dies erleichtert die Arbeit deutlich.
+Mit leJOS hat man die Möglichkeit wie sowohl über \gls{lcp} mit dem \textit{NXT-Brick} zu kommunizieren als auch den \textit{NXT-Brick} direkt programmieren. Leider fällt auch hier die Option der Fernsteuerung weg, da leJOS diese nur für einen einzelnen Brick ausgelegt hat(basierend auf der Aussage eines Entwicklers von leJOS). 
+
+Der von dem Entwickler vorgeschlagene Weg die fehlenden Funktionen in leJOS zu implementieren erwies sich als zeitaufwändig und führte zu keinem zufrieden stellendem Ergebnis. Hier fehlte die Möglichkeit die DLL, die die USB-Verbindung aufbaut, zu Debuggen. Da weitere Versuche hier zu zeitintensiv wären und ein ausreichend gutes Ergebnis nicht sicher war haben wir diese Option verworfen.  
+
+ Unsere Wahl fiel auf leJOS, da es sich hiermit komfortabel arbeiten lässt. Unter anderem bietet leJOS eine RemoteConsole. Mit deren Hilfe kann sich ein PC mit einem Brick verbinden und Consolenausgaben empfangen. Dies erleichtert die Arbeit deutlich.
